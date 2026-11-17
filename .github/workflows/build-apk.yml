@@ -1,0 +1,32 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Build APK
+        working-directory: AutoWallpaperChanger
+        run: gradle --no-daemon assembleDebug
+      - name: Save installable APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoWallpaperChanger-APK
+          path: AutoWallpaperChanger/app/build/outputs/apk/debug/app-debug.apk
