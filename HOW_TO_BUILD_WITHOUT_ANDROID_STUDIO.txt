@@ -1,0 +1,16 @@
+BUILD APK WITHOUT ANDROID STUDIO (GitHub Actions)
+
+1. Create a free GitHub account and an empty repository (Private is fine).
+2. Extract this ZIP on your computer.
+3. On the repository's Code tab, choose Add file > Upload files.
+4. Upload the contents of the extracted ZIP, preserving the AutoWallpaperChanger directory and the .github/workflows/build-apk.yml file.
+   Note: .github is hidden on some computers; enable showing hidden files, and check that it appears in the GitHub repo.
+5. Commit the upload to the default branch.
+6. Go to Actions > Build Android APK > Run workflow.
+7. Once the workflow succeeds, open the workflow run and download the AutoWallpaperChanger-APK artifact.
+8. Unzip that artifact; copy app-debug.apk to your Android phone and install it.
+
+You do not need Android Studio. Internet and a GitHub account are required to build via GitHub Actions.
+Android may show a warning before installing an APK from outside the Play Store.
+
+App is uncompiled and not device-tested in this environment. It is home-screen only, and background changes are approximate.
